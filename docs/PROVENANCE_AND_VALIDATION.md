@@ -1,6 +1,6 @@
 # Provenance and independent validation log
 
-**Recorded:** 2026-11-03. **State:** private review candidate; no R execution in preparation environment.
+**Recorded:** 2026-11-03. **State:** private review candidate with a successful clean GitHub Actions run (Python and R); not yet released publicly.
 
 ## Authenticated source files
 
@@ -61,10 +61,10 @@ The independent implementation is `statsmodels.duration.hazard_regression.PHReg`
 ## Current test status (not overstated)
 
 - **Passed locally:** three SHA-256 hashes and sizes; source schema; unique patient IDs; 566→505→501→485 filters; 177/308 outcome counts; three correlations; independent Cox estimates (8 standard + 4 stratified); LaTeX compilation, 17 pages, normalized report text identical to recovered historical PDF.
-- **Reconstructed but NOT R-executed in the current environment:** full R code (`survival`, `ggplot2`) for KM, log-rank, both Cox fits, Schoenfeld, martingale diagnostics and prognostic curves.
-- **Remaining numerical comparisons:** full Schoenfeld tables (historical global p = 0.016 standard and p = 0.461 stratified), confidence intervals for the KM median, predicted 60-month survival for three profiles (0.546, 0.398, 0.246), and regenerated plots. A different estimate should be explained, not overwritten in the report.
-- **CI:** `.github/workflows/checks.yml` is configured for both languages; **no workflow result exists for this new repository yet**. On creation, inspect the run results and fix any discrepancies before requesting public release.
+- **Passed in clean GitHub Actions (R 4.4.1):** `scripts/run_all.R` completed cohort preprocessing, descriptive tables, KM/log-rank, both Cox models, Schoenfeld diagnostics, martingale plots, prognostic profiles and `tests/validate_R_results.R` numerical assertions. The workflow's `validate-data` and `independent-cox` Python jobs also passed. [Verified run 41726080460](https://github.com/Salvatore-Megna/tcga-luad-hypoxia-survival/actions/runs/41726080460).
+- **Still worth reviewing individually:** compare the exported Schoenfeld tables to the historical p-values (global p = 0.016 standard and 0.461 stratified), check the confidence interval for median KM survival, and visually compare regenerated diagnostic/prognostic graphics with the archived originals. CI currently asserts only finite global Schoenfeld p-values and tolerances on 60-month prognostic survival; it does **not** establish exact agreement for every diagnostic figure/value.
+- **CI location:** `.github/workflows/checks.yml` with three successful jobs. Dependencies are installed on the runner; an `renv.lock` file is not claimed or provided.
 
 ## Publication gate
 
-Do not publish this as a fully reproducible study until (1) R CI succeeds, (2) the remaining diagnostics and curves are reviewed, (3) licensing and rights of dataset/report are reviewed, (4) README is updated to true CI status. Do not commit to a different project to run unrelated checks, and do not claim the historical R code was recovered.
+Computational reproducibility has been demonstrated by a clean CI run. Keep this repository private until (1) the remaining detailed diagnostic values and plots have been checked against the historical report, (2) source-data redistribution terms and report/code licensing have been reviewed, and (3) project description/topics and the final README have received a release review. Do not claim the historical R code was recovered.

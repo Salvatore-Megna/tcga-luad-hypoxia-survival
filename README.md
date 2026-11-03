@@ -4,7 +4,7 @@
 
 This project examines whether gene-expression-based tumor hypoxia signatures are associated with overall survival in lung adenocarcinoma, after accounting for major clinical characteristics. It reproduces a 2026 academic study using authentic cBioPortal datasets and a carefully documented reimplementation of the original R analyses.
 
-> **Status: private release candidate, not yet fully validated.** The source data are hash-verified, the original LaTeX report has been recovered and compiled, the cohort is replicated, and both Cox models agree with historical hazard ratios in an independent Python implementation. **End-to-end R execution and Schoenfeld diagnostics have not yet been verified**; the included GitHub Actions workflow will provide that check after repository creation.
+> **Status: private, end-to-end computational checks passed.** Source-data SHA-256 verification, cohort reconstruction, independent Python survival/Cox checks and the full reconstructed R pipeline passed on GitHub Actions (R 4.4.1, Python 3.11). [View the successful run](https://github.com/Salvatore-Megna/tcga-luad-hypoxia-survival/actions/runs/41726080460). Historical R source code was not recovered; this is a documented, independently checked reimplementation. Some detailed diagnostics still require comparison with historical report values before public release.
 
 ## At a glance
 
@@ -24,7 +24,7 @@ This project examines whether gene-expression-based tumor hypoxia signatures are
 - Overall survival estimates at 12, 36 and 60 months: **0.875, 0.615 and 0.392**, independently replicated from the raw data.
 - Stage is associated with survival (log-rank **p < 0.001**).
 - In the multivariable Cox model, an increase of 10 units in Buffa Hypoxia Score corresponds to an estimated HR of **1.117** (95% CI **1.036–1.206**) in the historical report; the HR is independently replicated from the authentic data.
-- The original report found evidence against proportional hazards in the standard model (global Schoenfeld **p = 0.016**) but not in the model stratified jointly by sex and stage (**p = 0.461**). These diagnostic p-values remain **historical targets until the R pipeline is executed**.
+- The original report found evidence against proportional hazards in the standard model (global Schoenfeld **p = 0.016**) but not in the model stratified jointly by sex and stage (**p = 0.461**). The reconstructed R workflow now **runs both Schoenfeld diagnostics successfully** and exports their tables; equality of these detailed p-values with the historical values has **not yet been separately asserted**.
 
 ![Original Kaplan–Meier curves grouped by stage](report/figures/km_stadio.png)
 
@@ -57,7 +57,7 @@ python -m pip install -r requirements-validation.txt
 python tests/independent_cox_check.py
 ```
 
-The first command verifies the exact source hashes, joins and sample flow without extra Python dependencies. The second numerical check uses `statsmodels` as an independent implementation of the Cox partial likelihood. Both checks and the R pipeline are configured in [GitHub Actions](.github/workflows/checks.yml); a workflow file alone is **not** evidence that an R run has succeeded.
+The first command verifies the exact source hashes, joins and sample flow without extra Python dependencies. The second numerical check uses `statsmodels` as an independent implementation of the Cox partial likelihood. All three jobs (data integrity, independent Python modeling and full R reconstruction) have **passed in [GitHub Actions](https://github.com/Salvatore-Megna/tcga-luad-hypoxia-survival/actions/runs/41726080460)**. The R job runs the complete workflow and the numerical benchmark assertions.
 
 ## Research report and provenance
 
