@@ -1,0 +1,29 @@
+# Runtime outputs (generated from scripts/run_all.R)
+outputs/
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+.Renviron
+
+# Python caches / environments
+__pycache__/
+.pytest_cache/
+.venv/
+venv/
+*.py[cod]
+
+# LaTeX intermediate files
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
