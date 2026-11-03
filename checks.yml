@@ -1,0 +1,37 @@
+name: Reproducibility checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  validate-data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate authentic datasets and cohort
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
+  reproduce-r:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: '4.4.1'
+      - name: Install dependencies
+        run: Rscript -e 'install.packages(c("survival", "ggplot2"), repos="https://cloud.r-project.org")'
+      - name: Recompute survival analyses and historical benchmarks
+        run: Rscript scripts/run_all.R
+  independent-cox:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install independent validation dependencies
+        run: python -m pip install -r requirements-validation.txt
+      - name: Check standard and stratified hazard ratios
+        run: python tests/independent_cox_check.py

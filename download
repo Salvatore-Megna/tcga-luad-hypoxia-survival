@@ -1,0 +1,14 @@
+outputs/
+.Rhistory
+.RData
+.Rproj.user/
+.Renviron
+*.Rproj.user
+__pycache__/
+.pytest_cache/
+*.pyc
+*.log
+*.aux
+*.out
+*.synctex.gz
+.DS_Store
