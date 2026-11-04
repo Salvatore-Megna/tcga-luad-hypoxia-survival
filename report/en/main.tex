@@ -206,103 +206,103 @@ The information lost by excluding incomplete cases is therefore limited. Neverth
 % Percorso della cartella caricata su Overleaf
 \graphicspath{{figures/}}
 
-\section{Analisi esplorativa}
+\section{Exploratory analysis}
 
-\subsection{Le variabili}
+\subsection{Variables}
 
-L'analisi esplorativa è stata condotta sul dataset comune ai modelli di Cox, costituito da 485 pazienti. Sono state esaminate la distribuzione del tempo osservato, l'età alla diagnosi, le principali variabili categoriali e gli indicatori molecolari di ipossia tumorale.
+The exploratory analysis was performed on the common Cox-model dataset of 485 patients. The distributions of observed survival time, age at diagnosis, the main categorical variables and the molecular tumor-hypoxia indicators were examined.
 
-\subsubsection{Tempo di sopravvivenza}
+\subsubsection{Survival time}
 
-La Figura~\ref{fig:distribuzione_tempo} mostra la distribuzione del tempo di sopravvivenza globale o di follow-up, espresso in mesi.
+Figure~\ref{fig:distribuzione_tempo} shows the distribution of overall survival or follow-up time, in months.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.92\textwidth]{distribuzione_tempo_sopravvivenza.pdf}
-    \caption{Distribuzione del tempo di sopravvivenza o di follow-up.}
+    \caption{Distribution of survival or follow-up time.}
     \label{fig:distribuzione_tempo}
 \end{figure}
 
-Il tempo osservato presenta una mediana di 21,4 mesi e un intervallo interquartile compreso tra 13,7 e 36,1 mesi; la media è pari a 29,1 mesi. La distribuzione è fortemente asimmetrica verso destra: la maggior parte dei pazienti presenta tempi relativamente contenuti, mentre un numero ridotto di soggetti è seguito per periodi molto più lunghi, fino a 238,3 mesi.
+Observed time has a median of 21.4 months and an interquartile range of 13.7 to 36.1 months; the mean is 29.1 months. The distribution is strongly right-skewed: most patients have relatively short observed times, while a small number are followed for much longer periods, up to 238.3 months.
 
-\subsubsection{Età alla diagnosi}
+\subsubsection{Age at diagnosis}
 
-La distribuzione dell'età dei pazienti al momento della diagnosi è riportata nella Figura~\ref{fig:distribuzione_eta}.
+The distribution of patients' age at diagnosis is shown in Figure~\ref{fig:distribuzione_eta}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.92\textwidth]{distribuzione_eta.pdf}
-    \caption{Distribuzione dell'età alla diagnosi.}
+    \caption{Distribution of age at diagnosis.}
     \label{fig:distribuzione_eta}
 \end{figure}
 
-L'età è concentrata prevalentemente tra circa 55 e 80 anni, con pochi pazienti molto giovani o particolarmente anziani. La distribuzione non mostra anomalie tali da impedire l'impiego dell'età come covariata quantitativa nel modello di Cox.
+Age is mainly concentrated between approximately 55 and 80 years, with few very young or particularly old patients. The distribution shows no anomalies that would prevent age from being used as a quantitative covariate in the Cox model.
 
-\subsubsection{Variabili categoriali}
+\subsubsection{Categorical variables}
 
-Le distribuzioni del sesso, dello stadio patologico e del sottotipo istologico sono rappresentate separatamente nelle Figure~\ref{fig:distribuzione_sesso}, \ref{fig:distribuzione_stadio} e \ref{fig:distribuzione_istologia}.
+Sex, pathological stage and histological subtype distributions are shown separately in Figures~\ref{fig:distribuzione_sesso}, \ref{fig:distribuzione_stadio} and \ref{fig:distribuzione_istologia}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.78\textwidth]{distribuzione_sesso.pdf}
-    \caption{Distribuzione dei pazienti per sesso.}
+    \caption{Distribution of patients by sex.}
     \label{fig:distribuzione_sesso}
 \end{figure}
 
-Nel campione sono presenti 264 donne, pari al 54,4\% del totale, e 221 uomini, pari al 45,6\%.
+There are 264 women (54.4\% of the sample) and 221 men (45.6\%).
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.82\textwidth]{distribuzione_stadio.pdf}
-    \caption{Distribuzione dei pazienti per stadio patologico.}
+    \caption{Distribution of patients by pathological stage.}
     \label{fig:distribuzione_stadio}
 \end{figure}
 
-La distribuzione è sbilanciata verso gli stadi iniziali: oltre la metà dei pazienti appartiene allo stadio I, mentre lo stadio IV rappresenta soltanto il 5,4\% del campione. Le stime relative allo stadio IV devono quindi essere interpretate con maggiore cautela.
+The distribution is skewed toward earlier stages: more than half of patients have stage I disease, while stage IV accounts for only 5.4\% of the sample. Estimates for stage IV therefore require greater caution.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.88\textwidth]{distribuzione_istologia.pdf}
-    \caption{Distribuzione dei pazienti per sottotipo istologico.}
+    \caption{Distribution of patients by histological subtype.}
     \label{fig:distribuzione_istologia}
 \end{figure}
 
-L'Adenocarcinoma NOS costituisce la categoria prevalente, comprendendo circa il 60\% del campione. La categoria Altri sottotipi è meno numerosa e riunisce forme istologiche differenti, risultando quindi internamente eterogenea.
+Adenocarcinoma NOS is the predominant category, accounting for approximately 60\% of the sample. The Other subtypes category is smaller and combines different histological forms, making it internally heterogeneous.
 
-\subsubsection{Indicatori di ipossia tumorale}
+\subsubsection{Tumor-hypoxia indicators}
 
-Nel dataset sono disponibili tre score associati all'ipossia tumorale: Buffa Hypoxia Score, Ragnum Hypoxia Score e Winter Hypoxia Score. Ciascuno sintetizza l'espressione di una diversa firma di geni che rispondono alla carenza di ossigeno. Questi valori non rappresentano quindi una misura diretta dell'ossigenazione del tessuto, ma indici molecolari relativi: uno score più elevato indica che il profilo di espressione del tumore è maggiormente compatibile con una risposta ipossica. Poiché le tre firme utilizzano insiemi di geni e scale differenti, i valori assoluti dei tre score non devono essere confrontati direttamente tra loro. Le rispettive distribuzioni sono riportate nella Figura~\ref{fig:distribuzione_hypoxia}.
+The dataset contains three tumor-hypoxia scores: Buffa Hypoxia Score, Ragnum Hypoxia Score and Winter Hypoxia Score. Each summarizes expression of a different gene signature responding to oxygen deprivation. These values are therefore not direct measurements of tissue oxygenation but relative molecular indices: a higher score indicates a tumor expression profile more consistent with a hypoxic response. Because the signatures use different gene sets and measurement scales, their absolute values should not be compared directly. Their respective distributions are shown in Figure~\ref{fig:distribuzione_hypoxia}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{distribuzione_hypoxia_scores.pdf}
-    \caption{Distribuzione degli indicatori molecolari di ipossia tumorale.}
+    \caption{Distribution of molecular tumor-hypoxia indicators.}
     \label{fig:distribuzione_hypoxia}
 \end{figure}
 
-I tre punteggi assumono valori sia negativi sia positivi e presentano distribuzioni abbastanza regolari, senza code estreme tali da richiedere trasformazioni preliminari. Nei modelli sono pertanto considerati inizialmente come variabili quantitative continue. Pur essendo espressi su scale differenti, i tre score possono essere confrontati in termini di associazione lineare mediante il coefficiente di correlazione di Pearson.
+All three scores take both negative and positive values and have fairly regular distributions without extreme tails requiring preliminary transformations. They are therefore initially treated as continuous quantitative variables in the models. Although measured on different scales, their linear associations can be compared using Pearson's correlation coefficient.
 
-\subsection{Correlazioni}
+\subsection{Correlations}
 
-La relazione lineare fra i tre indicatori di ipossia è stata valutata mediante il coefficiente di correlazione di Pearson. La matrice è mostrata nella Figura~\ref{fig:correlazione_hypoxia}.
+The linear relationships among the three hypoxia indicators were assessed using Pearson's correlation coefficient. The matrix is shown in Figure~\ref{fig:correlazione_hypoxia}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.76\textwidth]{correlazione_hypoxia_scores.pdf}
-    \caption{Matrice di correlazione fra gli indicatori di ipossia tumorale.}
+    \caption{Correlation matrix of tumor-hypoxia indicators.}
     \label{fig:correlazione_hypoxia}
 \end{figure}
 
-Le correlazioni risultano elevate: la correlazione tra Buffa e Ragnum è pari a 0,851, quella tra Buffa e Winter è pari a 0,922, mentre quella tra Ragnum e Winter è pari a 0,792.
+Correlations are high: the Buffa--Ragnum correlation is 0.851, Buffa--Winter is 0.922 and Ragnum--Winter is 0.792.
 
 \begin{table}[H]
     \centering
-    \caption{Correlazioni fra gli indicatori di ipossia tumorale.}
+    \caption{Correlations among tumor-hypoxia indicators.}
     \label{tab:correlazioni_hypoxia}
     \renewcommand{\arraystretch}{1.2}
     \begin{tabular}{l l c}
         \toprule
-        \textbf{Indicatore 1} & \textbf{Indicatore 2} & \textbf{Correlazione} \\
+        \textbf{Indicator 1} & \textbf{Indicator 2} & \textbf{Correlation} \\
         \midrule
         Buffa  & Ragnum & 0,851 \\
         Buffa  & Winter & 0,922 \\
@@ -311,49 +311,49 @@ Le correlazioni risultano elevate: la correlazione tra Buffa e Ragnum è pari a 
     \end{tabular}
 \end{table}
 
-La forte associazione tra i tre score suggerisce che essi descrivano componenti largamente sovrapposte dello stesso fenomeno biologico. Il loro inserimento simultaneo nel modello potrebbe quindi generare collinearità e rendere instabili le stime. Per mantenere il modello parsimonioso e interpretabile è stato scelto un solo indicatore, individuando nel Buffa Hypoxia Score la firma principale dell'analisi. Ragnum e Winter sono stati utilizzati per verificare la coerenza del fenomeno molecolare, ma non sono stati inseriti contemporaneamente nel modello. La scelta è quindi operativa e non rappresenta una dimostrazione di superiorità formale del Buffa score rispetto agli altri due indicatori.
+The strong association among the three scores suggests that they describe substantially overlapping components of the same biological phenomenon. Including them simultaneously in the model could therefore introduce collinearity and make estimates unstable. To keep the model parsimonious and interpretable, one indicator was selected: Buffa Hypoxia Score was used as the primary signature. Ragnum and Winter were used to examine the consistency of the molecular phenomenon, but were not entered into the model together. This is an operational choice, not evidence that the Buffa score is formally superior to the other two indicators.
 
 % ================================================================
 % 4. ANALISI DI SOPRAVVIVENZA
 % ================================================================
 
-\section{Analisi di sopravvivenza}
+\section{Survival analysis}
 
-La funzione di sopravvivenza è stata stimata mediante il metodo di Kaplan--Meier, considerando come tempo l'intervallo, espresso in mesi, tra la diagnosi e il decesso, oppure, per i pazienti che non hanno presentato l'evento, tra la diagnosi e l'ultimo contatto disponibile. Le osservazioni relative ai pazienti ancora in vita al termine del follow-up sono quindi considerate censurate.
+The survival function was estimated using the Kaplan--Meier method. Time was defined as the interval, in months, between diagnosis and death or, for patients without an observed event, between diagnosis and the last available contact. Patients alive at the end of follow-up were therefore treated as censored observations.
 
-\subsection{Curva di Kaplan--Meier complessiva}
+\subsection{Overall Kaplan--Meier curve}
 
-La curva complessiva descrive l'andamento della probabilità di sopravvivenza nella popolazione in studio. Come mostrato nella Figura~\ref{fig:km_complessiva}, la probabilità di sopravvivenza diminuisce progressivamente durante il follow-up, con una riduzione più marcata nei primi anni e una successiva coda caratterizzata da un numero più limitato di pazienti ancora a rischio.
+The overall curve describes how survival probability changes in the study population. As shown in Figure~\ref{fig:km_complessiva}, estimated survival probability decreases progressively during follow-up, with a more pronounced decline in the early years and a subsequent tail with fewer patients remaining at risk.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.92\textwidth]{km_complessiva.pdf}
-    \caption{Curva di Kaplan--Meier complessiva con intervallo di confidenza al 95\%.}
+    \caption{Overall Kaplan--Meier curve with a 95\% confidence interval.}
     \label{fig:km_complessiva}
 \end{figure}
 
-La sopravvivenza mediana stimata è pari a 49,1 mesi, con intervallo di confidenza al 95\% compreso tra 41,4 e 56,7 mesi. La probabilità di sopravvivenza stimata è pari all'87,5\% a 12 mesi, al 61,5\% a 36 mesi e al 39,2\% a 60 mesi.
+Estimated median survival is 49.1 months, with a 95\% confidence interval of 41.4 to 56.7 months. Estimated survival probabilities are 87.5\% at 12 months, 61.5\% at 36 months and 39.2\% at 60 months.
 
-\subsection{Curve di Kaplan--Meier per stadio patologico}
+\subsection{Kaplan--Meier curves by pathological stage}
 
-Per valutare l'associazione tra estensione della malattia e sopravvivenza, sono state stimate curve separate per i quattro stadi patologici, riportate nella Figura~\ref{fig:km_stadio}.
+To assess the association between disease extent and survival, separate curves were estimated for the four pathological stages, as shown in Figure~\ref{fig:km_stadio}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.92\textwidth]{km_stadio.pdf}
-    \caption{Curve di Kaplan--Meier per stadio patologico.}
+    \caption{Kaplan--Meier curves by pathological stage.}
     \label{fig:km_stadio}
 \end{figure}
 
-La curva relativa allo stadio I si mantiene generalmente al di sopra delle altre, indicando una prognosi più favorevole. Gli stadi II, III e IV mostrano invece una progressiva riduzione della probabilità di sopravvivenza, con esiti complessivamente peggiori negli stadi più avanzati.
+The stage I curve generally remains above the other curves, indicating a more favorable prognosis. Stages II, III and IV show progressively lower survival probabilities, with overall worse outcomes in the more advanced stages.
 
-Il test di log-rank evidenzia una differenza statisticamente significativa tra le curve di sopravvivenza dei quattro gruppi:
+The log-rank test indicates a statistically significant difference among the four groups' survival curves:
 
 \[
 p < 0{,}001.
 \]
 
-Lo stadio patologico risulta quindi fortemente associato alla sopravvivenza globale nell'analisi non aggiustata. Tale confronto non tiene tuttavia conto delle altre caratteristiche cliniche e molecolari dei pazienti, che verranno considerate successivamente mediante il modello di Cox.
+Pathological stage is therefore strongly associated with overall survival in the unadjusted analysis. However, this comparison does not account for the patients' other clinical and molecular characteristics, which will subsequently be considered in the Cox model.
 
 % ================================================================
 % 4.2 MODELLO DI COX MULTIVARIATO E STRATIFICATO
