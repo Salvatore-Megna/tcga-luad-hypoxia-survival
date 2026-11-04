@@ -50,7 +50,7 @@ jobs:
           critical = ("566", "505", "501", "485", "177", "308", "1,117",
                       "1,107", "0,461", "0,016", "49,1", "0,546", "0,398", "0,246")
           for value in critical:
-              assert value in italian and value in english, value
+              assert value in italian and (value in english or value.replace(",", ".") in english), value
 
           with pymupdf.open("report/report.pdf") as source, pymupdf.open("report/en/report.pdf") as translated:
               print("Italian pages:", len(source), "English pages:", len(translated))
