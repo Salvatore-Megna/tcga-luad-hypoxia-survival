@@ -1,6 +1,14 @@
 # Tumor Hypoxia and Overall Survival in Lung Adenocarcinoma
 
-[Project overview — English (PDF)](docs/project-page.pdf) · [Original report — Italian](report/report.pdf)
+## Reports
+
+| Document | PDF | LaTeX source |
+| --- | --- | --- |
+| **Full report — Italian (original)** | [Read Italian report](report/report.pdf) | [Italian LaTeX](report/main.tex) |
+| **Full report — English (translation)** | [Read English report](report/en/report.pdf) | [English LaTeX](report/en/main.tex) |
+| English project overview (one page) | [Read overview](docs/project-page.pdf) | [Overview LaTeX](docs/project-page.tex) |
+
+The English report translates the original academic study. All historical numerical results, figures and model definitions are retained. The reconstructed R/Python verification remains documented separately.
 
 **TCGA-LUAD PanCancer Atlas · Survival analysis · R · Reproducible research**
 
