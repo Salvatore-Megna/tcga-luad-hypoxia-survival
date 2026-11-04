@@ -359,77 +359,77 @@ Pathological stage is therefore strongly associated with overall survival in the
 % 4.2 MODELLO DI COX MULTIVARIATO E STRATIFICATO
 % ================================================================
 
-\subsection{Modello di Cox multivariato e stratificato}
+\subsection{Multivariable and stratified Cox models}
 
-Per valutare simultaneamente l'associazione tra le caratteristiche cliniche e molecolari dei pazienti e il rischio di morte è stato inizialmente stimato un modello di Cox multivariato a rischi proporzionali. Il modello comprende l'età alla diagnosi, il sesso, lo stadio patologico, il sottotipo istologico e il Buffa Hypoxia Score.
+To assess simultaneously the associations between patients' clinical and molecular characteristics and the risk of death, a multivariable proportional-hazards Cox model was first estimated. It includes age at diagnosis, sex, pathological stage, histological subtype and Buffa Hypoxia Score.
 
-L'età è stata espressa in unità di dieci anni e il Buffa Hypoxia Score in unità di dieci punti, così da rendere più immediata l'interpretazione dei rispettivi hazard ratio. Le categorie di riferimento sono il sesso femminile, lo stadio I e l'adenocarcinoma NOS.
+Age was expressed in ten-year units and Buffa Hypoxia Score in ten-point units to make the corresponding hazard ratios easier to interpret. Reference categories were female sex, stage I and adenocarcinoma NOS.
 
-Il modello iniziale può essere espresso come:
+The initial model can be written as:
 
 \begin{equation}
 \begin{split}
 h(t \mid X)=h_0(t)\exp\{&
-\beta_1 \mathrm{Et\grave{a}}_{10}
-+\beta_2 \mathrm{Sesso}
-+\beta_3 \mathrm{Stadio} \\
-&+\beta_4 \mathrm{Istologia}
+\beta_1 \mathrm{Age}_{10}
++\beta_2 \mathrm{Sex}
++\beta_3 \mathrm{Stage} \\
+&+\beta_4 \mathrm{Histology}
 +\beta_5 \mathrm{Buffa}_{10}\}.
 \end{split}
 \label{eq:cox_standard}
 \end{equation}
 
-I risultati del modello multivariato standard sono riportati nella Tabella~\ref{tab:cox_standard}.
+Results from the standard multivariable Cox model are reported in Table~\ref{tab:cox_standard}.
 
 \begin{table}[H]
 \centering
-\caption{Modello di Cox multivariato standard.}
+\caption{Standard multivariable Cox model.}
 \label{tab:cox_standard}
 \renewcommand{\arraystretch}{1.15}
 \small
 \begin{tabular}{l c c c}
 \toprule
-\textbf{Covariata}
+\textbf{Covariate}
 & \textbf{HR}
-& \textbf{IC 95\%}
+& \textbf{95\% CI}
 & \textbf{$p$-value} \\
 \midrule
-Età, per 10 anni
+Age, per 10 years
 & 1,236
 & 1,052--1,452
 & 0,010 \\
 
-Maschio vs Femmina
+Male vs Female
 & 1,013
 & 0,750--1,367
 & 0,933 \\
 
-Stadio II vs I
+Stage II vs I
 & 1,931
 & 1,334--2,795
 & $<0,001$ \\
 
-Stadio III vs I
+Stage III vs I
 & 2,888
 & 1,960--4,255
 & $<0,001$ \\
 
-Stadio IV vs I
+Stage IV vs I
 & 3,821
 & 2,170--6,729
 & $<0,001$ \\
 
-Adenocarcinoma misto vs NOS
+Mixed adenocarcinoma vs NOS
 & 0,748
 & 0,504--1,111
 & 0,150 \\
 
-Altri sottotipi vs NOS
+Other subtypes vs NOS
 & 0,477
 & 0,282--0,807
 & 0,006 \\
 
-Buffa score, per 10 punti
+Buffa score, per 10 points
 & 1,117
 & 1,036--1,206
 & 0,004 \\
@@ -437,46 +437,46 @@ Buffa score, per 10 punti
 \end{tabular}
 \end{table}
 
-Il modello risulta globalmente significativo secondo il likelihood ratio test ($p<0,001$).
+The model is globally significant according to the likelihood ratio test ($p<0,001$).
 
-A parità delle altre covariate, un incremento di dieci anni nell'età è associato a un aumento del rischio di morte pari a circa il 23,6\%. Il sesso non mostra invece un'associazione statisticamente significativa con l'evento.
+Holding the other covariates constant, a ten-year increase in age is associated with approximately a 23.6\% increase in the hazard of death. Sex, however, does not show a statistically significant association with the event.
 
-Lo stadio patologico risulta fortemente associato alla prognosi. Rispetto allo stadio I, l'hazard è circa 1,9 volte maggiore nello stadio II, 2,9 volte maggiore nello stadio III e 3,8 volte maggiore nello stadio IV.
+Pathological stage is strongly associated with prognosis. Compared with stage I, the hazard is approximately 1.9 times greater in stage II, 2.9 times greater in stage III and 3.8 times greater in stage IV.
 
-Per quanto riguarda l'istologia, l'adenocarcinoma misto non differisce significativamente dalla categoria NOS. La categoria degli altri sottotipi presenta invece un hazard inferiore, pari a 0,477. Infine, un aumento di dieci punti del Buffa Hypoxia Score è associato a un incremento dell'11,7\% del rischio di morte.
+Regarding histology, mixed adenocarcinoma does not differ significantly from the NOS reference category. Other subtypes, in contrast, have a lower hazard, with an HR of 0.477. Finally, a ten-point increase in Buffa Hypoxia Score is associated with an 11.7\% increase in the hazard of death.
 
-\subsubsection{Verifica dell'ipotesi di rischi proporzionali}
+\subsubsection{Checking the proportional-hazards assumption}
 
-L'assunzione di proporzionalità degli hazard è stata verificata mediante il test basato sui residui di Schoenfeld. I risultati relativi al modello standard sono riportati nella Tabella~\ref{tab:schoenfeld_standard}.
+The proportional-hazards assumption was assessed with the test based on Schoenfeld residuals. Results for the standard model are reported in Table~\ref{tab:schoenfeld_standard}.
 
 \begin{table}[H]
 \centering
-\caption{Test di Schoenfeld per il modello di Cox multivariato standard.}
+\caption{Schoenfeld test for the standard multivariable Cox model.}
 \label{tab:schoenfeld_standard}
 \renewcommand{\arraystretch}{1.15}
 \begin{tabular}{l c c c}
 \toprule
-\textbf{Covariata}
-& \textbf{Chi-quadro}
-& \textbf{gdl}
+\textbf{Covariate}
+& \textbf{Chi-square}
+& \textbf{df}
 & \textbf{$p$-value} \\
 \midrule
-Età
+Age
 & 1,611
 & 1
 & 0,204 \\
 
-Sesso
+Sex
 & 5,021
 & 1
 & 0,025 \\
 
-Stadio patologico
+Pathological stage
 & 10,313
 & 3
 & 0,016 \\
 
-Sottotipo istologico
+Histological subtype
 & 0,445
 & 2
 & 0,801 \\
@@ -486,7 +486,7 @@ Buffa Hypoxia Score
 & 1
 & 0,227 \\
 
-\textbf{Globale}
+\textbf{Global}
 & \textbf{18,719}
 & \textbf{8}
 & \textbf{0,016} \\
@@ -494,72 +494,72 @@ Buffa Hypoxia Score
 \end{tabular}
 \end{table}
 
-Il test non evidenzia violazioni per l'età, il sottotipo istologico e il Buffa Hypoxia Score. Al contrario, il sesso e lo stadio patologico presentano valori di $p$ inferiori a 0,05. Anche il test globale risulta significativo, indicando che il modello standard non soddisfa pienamente l'ipotesi di rischi proporzionali. Per il sesso, la non significatività dell'hazard ratio medio non esclude una possibile variazione dell'effetto nel tempo.
+The test shows no violation for age, histological subtype or Buffa Hypoxia Score. In contrast, sex and pathological stage have $p$-values below 0.05. The global test is also significant, indicating that the standard model does not fully satisfy the proportional-hazards assumption. For sex, a non-significant average hazard ratio does not rule out variation of its effect over time.
 
-In Figura~\ref{fig:schoenfeld_sesso_stadio} vengono riportati esclusivamente i residui di Schoenfeld relativi al sesso e allo stadio patologico, cioè le covariate per le quali il test ha evidenziato una possibile variazione dell'effetto nel tempo.
+Figure~\ref{fig:schoenfeld_sesso_stadio} displays only the Schoenfeld residuals for sex and pathological stage, the two covariates for which the test suggests possible time variation in effect.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.95\textwidth]{schoenfeld_sesso_stadio.pdf}
-\caption{Residui di Schoenfeld per sesso e stadio patologico.}
+\caption{Schoenfeld residuals for sex and pathological stage.}
 \label{fig:schoenfeld_sesso_stadio}
 \end{figure}
 
-I grafici confermano che l'effetto del sesso e dello stadio patologico non rimane costante durante il follow-up. In particolare, le curve smussate dei coefficienti stimati mostrano un andamento non perfettamente orizzontale nel tempo, coerente con i risultati significativi del test di Schoenfeld.
+The plots support the finding that the effects of sex and pathological stage are not constant throughout follow-up. In particular, the smoothed curves of the estimated coefficients are not perfectly horizontal over time, consistent with the significant Schoenfeld tests.
 
-Poiché l'ipotesi di rischi proporzionali non risulta soddisfatta per queste due covariate, è stato successivamente stimato un modello di Cox stratificato per sesso e stadio patologico. In questo modo, ciascuna combinazione delle due variabili può avere una propria funzione di rischio di base, senza imporre un effetto costante nel tempo.
+Because the proportional-hazards assumption is not met for these two covariates, a Cox model stratified by sex and pathological stage was fitted. This allows each combination of the two variables to have its own baseline hazard function, without imposing a time-constant effect.
 
-\subsubsection{Modello di Cox stratificato}
+\subsubsection{Stratified Cox model}
 
-Per gestire la violazione dell'ipotesi di proporzionalità è stato stimato un modello di Cox stratificato congiuntamente per stadio patologico e sesso. La stratificazione consente a ciascuna combinazione di stadio e sesso di possedere una propria funzione di rischio di base, senza imporre che gli effetti di queste due variabili rimangano costanti durante il follow-up.
+To address the proportionality violation, a Cox model jointly stratified by pathological stage and sex was estimated. Stratification allows each stage--sex combination to have its own baseline hazard function, without requiring the effects of these two variables to remain constant over follow-up.
 
-Il modello finale è:
+The final model is:
 
 \begin{equation}
 h_s(t \mid X)
 =
 h_{0s}(t)
 \exp\{
-\beta_1 \mathrm{Et\grave{a}}_{10}
-+\beta_2 \mathrm{Istologia}
+\beta_1 \mathrm{Age}_{10}
++\beta_2 \mathrm{Histology}
 +\beta_3 \mathrm{Buffa}_{10}
 \},
 \label{eq:cox_stratificato}
 \end{equation}
 
-dove $s$ identifica lo strato definito dalla combinazione tra stadio patologico e sesso. La stratificazione consente quindi funzioni di rischio di base differenti per le combinazioni osservate delle due variabili, fino a un massimo teorico di otto strati. Il costo di questa scelta è che il modello non restituisce un unico hazard ratio per sesso e stadio patologico, poiché i loro effetti vengono assorbiti nelle funzioni di rischio di base specifiche di strato.
+where $s$ identifies the stratum defined by the combination of pathological stage and sex. Stratification therefore permits different baseline hazard functions across the observed combinations, up to a theoretical maximum of eight strata. The trade-off is that the model does not return a single hazard ratio for sex or pathological stage, because their effects are absorbed into the stratum-specific baseline hazard functions.
 
-I risultati del modello stratificato finale sono riportati nella Tabella~\ref{tab:cox_stratificato}.
+Results from the final stratified model are reported in Table~\ref{tab:cox_stratificato}.
 
 \begin{table}[H]
 \centering
-\caption{Modello di Cox stratificato per stadio patologico e sesso.}
+\caption{Cox model stratified by pathological stage and sex.}
 \label{tab:cox_stratificato}
 \renewcommand{\arraystretch}{1.15}
 \small
 \begin{tabular}{l c c c}
 \toprule
-\textbf{Covariata}
+\textbf{Covariate}
 & \textbf{HR}
-& \textbf{IC 95\%}
+& \textbf{95\% CI}
 & \textbf{$p$-value} \\
 \midrule
-Età, per 10 anni
+Age, per 10 years
 & 1,241
 & 1,055--1,460
 & 0,009 \\
 
-Adenocarcinoma misto vs NOS
+Mixed adenocarcinoma vs NOS
 & 0,769
 & 0,516--1,144
 & 0,195 \\
 
-Altri sottotipi vs NOS
+Other subtypes vs NOS
 & 0,473
 & 0,275--0,812
 & 0,007 \\
 
-Buffa score, per 10 punti
+Buffa score, per 10 points
 & 1,107
 & 1,025--1,196
 & 0,010 \\
@@ -567,34 +567,34 @@ Buffa score, per 10 punti
 \end{tabular}
 \end{table}
 
-Il modello stratificato risulta globalmente significativo secondo il likelihood ratio test ($p<0,001$).
+The stratified model is globally significant according to the likelihood ratio test ($p<0,001$).
 
-Anche dopo aver consentito a stadio e sesso di possedere rischi di base differenti, l'età e il Buffa Hypoxia Score rimangono significativamente associati alla sopravvivenza. Un aumento di dieci anni nell'età determina un incremento dell'hazard pari a circa il 24,1\%, mentre un aumento di dieci punti del Buffa score è associato a un incremento del rischio pari al 10,7\%.
+Even after allowing stage and sex to have different baseline hazards, age and Buffa Hypoxia Score remain significantly associated with survival. A ten-year increase in age corresponds to an approximately 24.1\% increase in hazard, while a ten-point increase in the Buffa score is associated with a 10.7\% increase in risk.
 
-Gli altri sottotipi istologici continuano a mostrare un hazard inferiore rispetto all'adenocarcinoma NOS, mentre l'adenocarcinoma misto non presenta una differenza statisticamente significativa.
+Other histological subtypes continue to have a lower hazard than adenocarcinoma NOS, whereas mixed adenocarcinoma does not show a statistically significant difference.
 
-\subsubsection{Verifica del modello stratificato}
+\subsubsection{Assessment of the stratified model}
 
-Il test di Schoenfeld è stato ripetuto sulle covariate stimate nel modello stratificato. I risultati sono riportati nella Tabella~\ref{tab:schoenfeld_stratificato}.
+The Schoenfeld test was repeated for the covariates estimated in the stratified model. Results are presented in Table~\ref{tab:schoenfeld_stratificato}.
 
 \begin{table}[H]
 \centering
-\caption{Test di Schoenfeld per il modello di Cox stratificato.}
+\caption{Schoenfeld test for the stratified Cox model.}
 \label{tab:schoenfeld_stratificato}
 \renewcommand{\arraystretch}{1.15}
 \begin{tabular}{l c c c}
 \toprule
-\textbf{Covariata}
-& \textbf{Chi-quadro}
-& \textbf{gdl}
+\textbf{Covariate}
+& \textbf{Chi-square}
+& \textbf{df}
 & \textbf{$p$-value} \\
 \midrule
-Età
+Age
 & 2,796
 & 1
 & 0,095 \\
 
-Sottotipo istologico
+Histological subtype
 & 0,167
 & 2
 & 0,920 \\
@@ -604,7 +604,7 @@ Buffa Hypoxia Score
 & 1
 & 0,662 \\
 
-\textbf{Globale}
+\textbf{Global}
 & \textbf{3,613}
 & \textbf{4}
 & \textbf{0,461} \\
@@ -612,53 +612,53 @@ Buffa Hypoxia Score
 \end{tabular}
 \end{table}
 
-Tutti i valori di $p$ risultano superiori a 0,05 e il test globale non è significativo. Non emerge quindi evidenza di una violazione residua dell'ipotesi di rischi proporzionali. Per questo motivo non vengono riportati ulteriori grafici dei residui di Schoenfeld per il modello stratificato.
+All $p$-values exceed 0.05 and the global test is not significant. There is thus no evidence of a remaining proportional-hazards violation. For this reason, no additional Schoenfeld-residual plots for the stratified model are presented.
 
-Il modello stratificato viene pertanto considerato il modello finale, poiché consente di gestire la non proporzionalità di sesso e stadio mantenendo nel modello le associazioni relative all'età, al sottotipo istologico e all'ipossia tumorale. Tale scelta comporta tuttavia la rinuncia alla stima di un unico hazard ratio per le due variabili utilizzate nella stratificazione.
+The stratified model is therefore regarded as the final model, as it accommodates the non-proportionality of sex and stage while retaining the associations with age, histological subtype and tumor hypoxia. This choice nevertheless means that no single hazard ratio is estimated for the two stratification variables.
 
-\subsection{Diagnostica del modello definitivo}
+\subsection{Diagnostics of the final model}
 
-Per valutare l'adeguatezza della forma funzionale delle covariate continue incluse nel modello stratificato finale sono stati analizzati i residui di Martingala rispetto all'età e al Buffa Hypoxia Score.
+To assess the adequacy of the functional form of the continuous covariates in the final stratified model, Martingale residuals were examined against age and Buffa Hypoxia Score.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.95\textwidth]{martingala_eta_buffa.pdf}
-\caption{Residui di Martingala rispetto all'età e al Buffa Hypoxia Score.}
+\caption{Martingale residuals versus age and Buffa Hypoxia Score.}
 \label{fig:martingala_eta_buffa}
 \end{figure}
 
-La linea rossa orizzontale rappresenta il valore di riferimento pari a zero. In entrambi i grafici i residui risultano dispersi al di sopra e al di sotto di tale linea, senza evidenziare pattern sistematici particolarmente marcati rispetto all'età o al Buffa Hypoxia Score. L'analisi grafica non suggerisce quindi deviazioni evidenti dalla forma funzionale lineare adottata nel modello.
+The horizontal red line marks the reference value of zero. In both plots, residuals are scattered above and below that line, without particularly pronounced systematic patterns against age or Buffa Hypoxia Score. The graphical inspection therefore does not suggest obvious departures from the linear functional form used in the model.
 
-\subsection{Profili prognostici clinico-molecolari}
+\subsection{Clinical--molecular prognostic profiles}
 
-Per illustrare l'effetto congiunto dell'età e dell'ipossia tumorale sono stati definiti tre profili ipotetici. Il profilo favorevole corrisponde a una paziente di 55 anni con Buffa Hypoxia Score pari a $-20$, quello intermedio a una paziente di 65 anni con score pari a 0 e quello sfavorevole a una paziente di 75 anni con score pari a 20. In tutti e tre i profili sono stati mantenuti costanti il sesso femminile, lo stadio I e il sottotipo istologico Adenocarcinoma NOS.
+To illustrate the joint effects of age and tumor hypoxia, three hypothetical profiles were defined. The favorable profile represents a 55-year-old female patient with a Buffa Hypoxia Score of $-20$, the intermediate profile a 65-year-old female patient with a score of 0, and the unfavorable profile a 75-year-old female patient with a score of 20. Female sex, stage I and adenocarcinoma NOS were held constant across all three profiles.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.95\textwidth]{curve_profili_prognostici.pdf}
-\caption{Curve di sopravvivenza stimata per i tre profili prognostici clinico-molecolari.}
+\caption{Estimated survival curves for the three clinical--molecular prognostic profiles.}
 \label{fig:profili_prognostici}
 \end{figure}
 
-Le curve mostrano un gradiente prognostico netto. A 60 mesi, la sopravvivenza stimata è pari a 0,546 per il profilo favorevole, 0,398 per quello intermedio e 0,246 per quello sfavorevole. La separazione riflette l'effetto combinato di età e Buffa Hypoxia Score secondo il modello stimato.
+The curves show a clear prognostic gradient. At 60 months, estimated survival is 0.546 for the favorable profile, 0.398 for the intermediate profile and 0.246 for the unfavorable profile. The separation reflects the combined effects of age and Buffa Hypoxia Score under the fitted model.
 
-\section{Limiti dello studio}
+\section{Study limitations}
 
-I risultati devono essere interpretati considerando alcuni limiti. In primo luogo, l'analisi utilizza dati osservazionali e retrospettivi, per cui le associazioni stimate non possono essere interpretate in senso causale. Inoltre, è stata adottata un'analisi per casi completi: la quota di osservazioni escluse è contenuta, ma la validità delle stime richiede che i dati mancanti non introducano differenze sistematiche rilevanti tra pazienti inclusi ed esclusi.
+The results should be interpreted in light of several limitations. First, the analysis uses observational, retrospective data, so the estimated associations cannot be interpreted causally. A complete-case analysis was also adopted: the proportion of excluded observations is small, but valid estimation requires that missing values do not introduce important systematic differences between included and excluded patients.
 
-La numerosità dello stadio IV è ridotta e la stratificazione congiunta per stadio e sesso suddivide ulteriormente il campione in combinazioni meno numerose. Le stime relative agli strati meno rappresentati devono quindi essere interpretate con cautela. Infine, la categoria ``Altri sottotipi'' riunisce forme istologiche differenti e può nascondere una certa eterogeneità interna.
+The number of stage IV patients is small, and jointly stratifying by stage and sex further divides the sample into smaller groups. Estimates for sparsely represented strata should therefore be interpreted cautiously. Finally, the Other subtypes category combines different histological forms and may conceal considerable internal heterogeneity.
 
-\section{Conclusioni}
+\section{Conclusions}
 
-L'analisi evidenzia che età alla diagnosi, Buffa Hypoxia Score e sottotipo istologico sono associati alla sopravvivenza dei pazienti con adenocarcinoma polmonare. In particolare, un aumento di dieci anni nell'età corrisponde a un incremento dell'hazard di circa il 24\%, mentre un aumento di dieci punti del Buffa score è associato a un incremento di circa l'11\%.
+The analysis shows that age at diagnosis, Buffa Hypoxia Score and histological subtype are associated with survival in patients with lung adenocarcinoma. In particular, a ten-year increase in age corresponds to an approximately 24\% increase in hazard, while a ten-point increase in the Buffa score is associated with an increase of about 11\%.
 
-Lo stadio patologico risulta fortemente associato alla prognosi nel modello standard. Poiché sesso e stadio non soddisfano l'ipotesi di rischi proporzionali, è stato adottato un modello stratificato, che elimina l'evidenza di violazioni residue e mantiene le associazioni relative alle altre covariate.
+Pathological stage is strongly associated with prognosis in the standard model. Because sex and stage do not satisfy the proportional-hazards assumption, a stratified model was used; this removes the evidence of remaining violations while retaining the associations with the other covariates.
 
-Nel complesso, i risultati indicano che l'integrazione tra caratteristiche cliniche e ipossia tumorale consente di distinguere livelli prognostici differenti, pur con i limiti legati alla natura osservazionale dei dati e alla ridotta numerosità di alcuni sottogruppi.
+Overall, the findings indicate that combining clinical characteristics with tumor-hypoxia information can distinguish different prognostic levels, subject to limitations arising from the observational nature of the data and small sizes of some subgroups.
 
-\section{Fonti}
+\section{Sources}
 
-I dati utilizzati nell'analisi provengono dallo studio
+The data used in this analysis come from the study
 \textit{Lung Adenocarcinoma (TCGA, PanCancer Atlas)}, disponibile su cBioPortal for Cancer Genomics:
 
 \begin{center}
