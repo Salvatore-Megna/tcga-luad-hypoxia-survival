@@ -1,0 +1,61 @@
+name: Validate TCGA-LUAD English report
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  translated-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install PDF validation tools
+        run: python -m pip install 'pymupdf>=1.24,<2'
+      - name: Rebuild translated figures from historical vector originals
+        run: python report/en/translate_figures.py
+      - name: Rebuild English report from LaTeX
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: main.tex
+          working_directory: report/en
+      - name: Verify historical numerical results, figures and pagination
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          import pymupdf
+
+          original = Path("report/main.tex").read_text(encoding="utf-8")
+          english = Path("report/en/main.tex").read_text(encoding="utf-8")
+
+          def table_values(source):
+              tables = re.findall(r"\\begin\{table\}([\s\S]*?)\\end\{table\}", source)
+              return [re.findall(r"\d+(?:,\d+)?(?:--\d+(?:,\d+)?)?", table)
+                      for table in tables]
+
+          for source in (original, english):
+              assert source.count(r"\begin{figure}") == 12
+              assert source.count(r"\begin{table}") == 8
+              assert source.count(r"\begin{equation}") == 2
+          assert table_values(original) == table_values(english)
+
+          with pymupdf.open("report/report.pdf") as it, \
+               pymupdf.open("report/en/report.pdf") as published, \
+               pymupdf.open("report/en/main.pdf") as compiled:
+              assert len(it) == len(published) == len(compiled) == 17
+              for expected, actual in zip(it, compiled):
+                  assert abs(expected.rect.width - actual.rect.width) < 1
+                  assert abs(expected.rect.height - actual.rect.height) < 1
+              text = "\n".join(p.get_text() for p in compiled)
+              for term in ("Tumor hypoxia and survival", "Cox",
+                           "Kaplan", "Schoenfeld", "Conclusions", "Sources"):
+                  assert term in text, term
+          print("TCGA bilingual report validated: 17 A4 pages, 8 numeric tables, 12 figures, 2 equations.")
+          PY
