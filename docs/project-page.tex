@@ -1,0 +1,53 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\geometry{top=2.5cm,bottom=2.5cm,left=2.7cm,right=2.7cm}
+\setlist[itemize]{leftmargin=*,topsep=2pt,itemsep=2pt,parsep=0pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\begin{document}
+\begin{center}
+{\Large\bfseries Tumor Hypoxia and Lung Cancer Survival}\\[0.65em]
+{\normalsize Salvatore Megna}\\[0.25em]
+{\small Data Science / Statistical Research}
+\end{center}
+\vspace{1.1em}
+\par
+\vspace{1.15em}
+\noindent{\bfseries Research question}\par
+Are gene-expression-derived hypoxia scores associated with overall survival in lung adenocarcinoma after adjustment for clinical characteristics?
+\par
+\par
+\vspace{1.15em}
+\noindent{\bfseries Data and methods}\par
+TCGA-LUAD PanCancer Atlas clinical records and Buffa, Ragnum and Winter hypoxia scores. Cohort flow: 566 initial patients, 485 complete analysis cases, including 177 deaths.
+
+Kaplan--Meier estimation, log-rank comparisons, multivariable Cox models, proportional-hazards diagnostics and sex-by-stage stratification.
+\par
+\par
+\vspace{1.15em}
+\noindent{\bfseries Selected results}\par
+\begin{itemize}
+\item Overall survival estimates at 12, 36 and 60 months: 0.875, 0.615 and 0.392.
+\item In the reported Cox model, a 10-unit Buffa-score increase has HR 1.117 (95\% CI 1.036--1.206).
+\item Historical global Schoenfeld tests give $p=0.016$ before and $p=0.461$ after stratification.
+\end{itemize}
+\par
+\par
+\vspace{1.15em}
+\noindent{\bfseries Interpretation and limitations}\par
+These are observational associations, not clinical decision rules. Hypoxia signatures are indirect measures, subgroup sizes are limited, and some detailed diagnostic plots still need historical cross-checks.
+\par
+\par
+\vspace{1.15em}
+\noindent{\bfseries Reproduce}\par
+\texttt{Rscript scripts/run\_all.R}
+\par
+\vfill
+\noindent\small\href{https://github.com/Salvatore-Megna/tcga-luad-hypoxia-survival}{Repository and full documentation}
+\end{document}

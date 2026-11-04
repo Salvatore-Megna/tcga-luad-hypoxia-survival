@@ -1,5 +1,7 @@
 # Tumor Hypoxia and Overall Survival in Lung Adenocarcinoma
 
+[Project overview — English (PDF)](docs/project-page.pdf) · [Original report — Italian](report/report.pdf)
+
 **TCGA-LUAD PanCancer Atlas · Survival analysis · R · Reproducible research**
 
 This project examines whether gene-expression-based tumor hypoxia signatures are associated with overall survival in lung adenocarcinoma, after accounting for major clinical characteristics. It reproduces a 2026 academic study using authentic cBioPortal datasets and a carefully documented reimplementation of the original R analyses.
